@@ -304,7 +304,6 @@ body {
 
   color: #FFFFFF;
   background: #5E5E5E;
-  gopa: sobake;
 }
 
 .main-header__container {
@@ -470,6 +469,7 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .about-us-section__text {
@@ -522,4 +522,51 @@ section {
   line-height: 22px;
 
   margin-bottom: 1em;
+}
+
+.agenda-section {
+  margin-top: 5em;
+}
+
+.agenda-section__column {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.agenda-section__row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 100%;
+
+  margin-top: 2em;
+}
+
+.agenda-section__list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.agenda-section__list_item {
+  /*margin-bottom: 3em;*/
+}
+
+.agenda-section__list_item__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+
+  color: #FF6E00;
+
+  margin-bottom: 1em;
+}
+
+.agenda-section__list_item__content {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
 }
