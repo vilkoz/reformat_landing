@@ -267,25 +267,25 @@ textarea {
 
 @font-face{
   font-family: "Montserrat";
-  src: url("/font/Montserrat-Regular.ttf") format("truetype"),
-       url("/font/Montserrat-Black.ttf") format("truetype"),
-       url("/font/Montserrat-Black.ttf") format("truetype"),
-       url("/font/Montserrat-BlackItalic.ttf") format("truetype"),
-       url("/font/Montserrat-Bold.ttf") format("truetype"),
-       url("/font/Montserrat-BoldItalic.ttf") format("truetype"),
-       url("/font/Montserrat-ExtraBold.ttf") format("truetype"),
-       url("/font/Montserrat-ExtraBoldItalic.ttf") format("truetype"),
-       url("/font/Montserrat-ExtraLight.ttf") format("truetype"),
-       url("/font/Montserrat-ExtraLightItalic.ttf") format("truetype"),
-       url("/font/Montserrat-Italic.ttf") format("truetype"),
-       url("/font/Montserrat-Light.ttf") format("truetype"),
-       url("/font/Montserrat-LightItalic.ttf") format("truetype"),
-       url("/font/Montserrat-Medium.ttf") format("truetype"),
-       url("/font/Montserrat-MediumItalic.ttf") format("truetype"),
-       url("/font/Montserrat-SemiBold.ttf") format("truetype"),
-       url("/font/Montserrat-SemiBoldItalic.ttf") format("truetype"),
-       url("/font/Montserrat-Thin.ttf") format("truetype"),
-       url("/font/Montserrat-ThinItalic.ttf") format("truetype");
+  src: url("../font/Montserrat-Regular.ttf") format("truetype"),
+       url("../font/Montserrat-Black.ttf") format("truetype"),
+       url("../font/Montserrat-Black.ttf") format("truetype"),
+       url("../font/Montserrat-BlackItalic.ttf") format("truetype"),
+       url("../font/Montserrat-Bold.ttf") format("truetype"),
+       url("../font/Montserrat-BoldItalic.ttf") format("truetype"),
+       url("../font/Montserrat-ExtraBold.ttf") format("truetype"),
+       url("../font/Montserrat-ExtraBoldItalic.ttf") format("truetype"),
+       url("../font/Montserrat-ExtraLight.ttf") format("truetype"),
+       url("../font/Montserrat-ExtraLightItalic.ttf") format("truetype"),
+       url("../font/Montserrat-Italic.ttf") format("truetype"),
+       url("../font/Montserrat-Light.ttf") format("truetype"),
+       url("../font/Montserrat-LightItalic.ttf") format("truetype"),
+       url("../font/Montserrat-Medium.ttf") format("truetype"),
+       url("../font/Montserrat-MediumItalic.ttf") format("truetype"),
+       url("../font/Montserrat-SemiBold.ttf") format("truetype"),
+       url("../font/Montserrat-SemiBoldItalic.ttf") format("truetype"),
+       url("../font/Montserrat-Thin.ttf") format("truetype"),
+       url("../font/Montserrat-ThinItalic.ttf") format("truetype");
 }
 
 html {
@@ -387,7 +387,7 @@ a, a:hover, a:visited, a:active {
 }
 
 .home-section__image {
-  /*background: url("/img/illustrations/1.png") no-repeat;*/
+  /*background: url("../img/illustrations/1.png") no-repeat;*/
   /*width: 696px;*/
   /*height: 521px;*/
   max-width: 60%;
@@ -405,27 +405,27 @@ a, a:hover, a:visited, a:active {
 }
 
 .button_2 {
-  background: url("/img/buttons/2.png") no-repeat;
+  background: url("../img/buttons/2.png") no-repeat;
 }
 
 .button_2:hover {
-  background: url("/img/buttons/4.png") no-repeat;
+  background: url("../img/buttons/4.png") no-repeat;
 }
 
 .button_4 {
-  background: url("/img/buttons/4.png") no-repeat;
+  background: url("../img/buttons/4.png") no-repeat;
 }
 
 .button_4:hover {
-  background: url("/img/buttons/2.png") no-repeat;
+  background: url("../img/buttons/2.png") no-repeat;
 }
 
 .button_3 {
-  background: url("/img/buttons/3.png") no-repeat;
+  background: url("../img/buttons/3.png") no-repeat;
 }
 
 .button_3:hover {
-  background: url("/img/buttons/2.png") no-repeat;
+  background: url("../img/buttons/2.png") no-repeat;
 }
 
 .subtitle {
