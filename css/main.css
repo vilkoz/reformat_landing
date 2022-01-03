@@ -306,10 +306,8 @@ a, a:hover, a:visited, a:active {
   font-weight: 600;
   font-size: 14px;
   line-height: 17px;
-
   display: flex;
   justify-content: center;
-
   color: #FFFFFF;
   background: #5E5E5E;
 }
@@ -362,6 +360,7 @@ a, a:hover, a:visited, a:active {
   z-index: 2;
   margin: 0;
   position: relative;
+  width: 100%;
 }
 
 .home-section__row {
@@ -388,9 +387,16 @@ a, a:hover, a:visited, a:active {
 
 .home-section__image {
   /*background: url("../img/illustrations/1.png") no-repeat;*/
-  /*width: 696px;*/
-  /*height: 521px;*/
-  max-width: 60%;
+  /* width: 696px; */
+  /* height: 521px; */
+  /* max-width: 60%; */
+  width: 60%;
+  display: flex;
+  align-items: center;
+}
+
+.home-section__image > img {
+  max-width: 100%;
 }
 
 .button {
@@ -887,4 +893,11 @@ section {
 
 .booking-form__column > .button {
   align-self: center;
+}
+
+
+@media only screen and (max-width: 1100px) {
+  .main-header {
+    font-size: 0.8rem;
+  }
 }
