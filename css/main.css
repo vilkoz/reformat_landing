@@ -401,37 +401,40 @@ a, a:hover, a:visited, a:active {
 
 .button {
   width: 306px;
+  max-width: 100%;
   height: 93px;
   display: flex;
   justify-content: center;
   align-items: center;
-
   cursor: pointer;
   color: #FFFFFF;
+  background-position: top left;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
 }
 
 .button_2 {
-  background: url("../img/buttons/2.png") no-repeat;
+  background-image: url("../img/buttons/2.png");
 }
 
 .button_2:hover {
-  background: url("../img/buttons/4.png") no-repeat;
+  background-image: url("../img/buttons/4.png");
 }
 
 .button_4 {
-  background: url("../img/buttons/4.png") no-repeat;
+  background-image: url("../img/buttons/4.png");
 }
 
 .button_4:hover {
-  background: url("../img/buttons/2.png") no-repeat;
+  background-image: url("../img/buttons/2.png");
 }
 
 .button_3 {
-  background: url("../img/buttons/3.png") no-repeat;
+  background-image: url("../img/buttons/3.png");
 }
 
 .button_3:hover {
-  background: url("../img/buttons/2.png") no-repeat;
+  background-image: url("../img/buttons/2.png");
 }
 
 .subtitle {
@@ -469,6 +472,7 @@ a, a:hover, a:visited, a:active {
 section {
   height: 601px;
   margin: 2em;
+  width: calc(100% - 4em);
 }
 
 .about-us-section {
@@ -480,22 +484,27 @@ section {
 
 .about-us-section__row {
   margin: 0 auto;
-
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 100px;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .about-us-section__video {
   background: #9D9D9D;
-  height: 420px;
+  /*height: 420px;*/
   width: 625px;
 
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+
+  max-width: 60%;
+  aspect-ratio: 4/3;
 }
 
 .about-us-section__text {
@@ -512,6 +521,9 @@ section {
 
 .benefits-section {
   background: #FFAA69;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .benefits-section__column {
@@ -520,6 +532,8 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 1200px;
+  width: 100%;
 }
 
 .benefits-section__row {
@@ -527,7 +541,6 @@ section {
   flex-direction: row;
   justify-content: space-evenly;
   width: 100%;
-
   margin-top: 2em;
 }
 
@@ -552,6 +565,9 @@ section {
 
 .agenda-section {
   margin-top: 5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .agenda-section__column {
@@ -560,6 +576,8 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .agenda-section__row {
@@ -640,6 +658,8 @@ section {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .contacts-section__column {
@@ -663,6 +683,14 @@ section {
   border: 2px solid black;
   width: 300px;
   height: 36px;
+}
+
+.contacts-section__image {
+  max-width: 100%;
+}
+
+.contacts-section__image > img {
+  max-width: 100%;
 }
 
 .border-left {
@@ -896,8 +924,14 @@ section {
 }
 
 
-@media only screen and (max-width: 1100px) {
+@media only screen and (max-width: 1100px) and (min-width: 769px) {
   .main-header {
-    font-size: 0.8rem;
+    font-size: 0.6rem;
+  }
+  .footer {
+    font-size: 0.6rem;
+  }
+  .title {
+    font-size: 40px;
   }
 }
