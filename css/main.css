@@ -703,6 +703,10 @@ section {
   max-width: 100%;
 }
 
+.contacts-section__image-mobile {
+  display: none;
+}
+
 .border-left {
   border-left: 2px solid black;
 }
@@ -1105,5 +1109,53 @@ section {
 
   .footer {
     display: none;
+  }
+
+  .contacts-section__image {
+    display: none;
+  }
+
+  .contacts-section__image-mobile {
+    display: block;
+    width: 100%;
+    margin-left: -64px;
+  }
+
+  .contacts-section__image-mobile > img {
+    width: inherit;
+  }
+
+  .contacts-section__column {
+    max-width: inherit;
+    align-items: center;
+    text-align: center;
+    gap: 2rem;
+
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+  }
+
+  .contacts-section__column > .title {
+    width: 40%;
+  }
+
+  .contacts-section__contacts {
+    text-align: left;
+    align-self: flex-start;
+  }
+
+  .contacts-section__social {
+    width: 100%;
+    border: none;
+  }
+
+  .contacts-section__social_item {
+    border: 2px solid black;
+
+    width: calc(100% / 3);
+  }
+
+  .contacts-section__social_item.border-left {
+    margin-left: -2px;
   }
 }
