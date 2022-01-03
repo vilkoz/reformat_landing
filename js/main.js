@@ -99,15 +99,18 @@ class TouchDetector {
 }
 
 domReady(() => {
+  const body = document.getElementsByTagName('body')[0]
   let our_team_button = document.getElementById('our-team-button')
   let our_team_popup = document.getElementById('our-team')
   let our_team_close_button = document.getElementById('our-team-close-button')
 
   our_team_button.onclick = () => {
     our_team_popup.classList.remove('hidden')
+    body.classList.add('modal-open')
   }
   our_team_close_button.onclick = () => {
     our_team_popup.classList.add('hidden')
+    body.classList.remove('modal-open')
   }
 
 
@@ -118,11 +121,13 @@ domReady(() => {
   booking_form_buttons.forEach(button => {
     button.onclick = () => {
       booking_form_popup.classList.remove('hidden')
+      body.classList.add('modal-open')
     }
   })
 
   booking_form_close_button.onclick = () => {
     booking_form_popup.classList.add('hidden')
+    body.classList.remove('modal-open')
   }
 
   let send_booking_form_button = document.getElementById('send-booking-form')
@@ -137,10 +142,12 @@ domReady(() => {
 
   mobile_menu_open_button.onclick = () => {
     mobile_menu_popup.classList.remove('hidden')
+    body.classList.add('modal-open')
   }
 
   function mobile_menu_hide () {
     mobile_menu_popup.classList.add('hidden')
+    body.classList.remove('modal-open')
     return true
   }
 
@@ -155,6 +162,7 @@ domReady(() => {
   mobileMenuOpenTouchDetector.addListeners(document.getElementsByTagName('main')[0])
   mobileMenuOpenTouchDetector.addCallback('left', (x, y) => {
     mobile_menu_popup.classList.remove('hidden')
+    body.classList.add('modal-open')
   })
   mobileMenuOpenTouchDetector.addCallback('moveLeft', (x, y) => {
       mobile_menu_popup.classList.remove('hidden')
@@ -170,13 +178,11 @@ domReady(() => {
   mobileMenuCloseTouchDetector.addCallback('end', (x, y) => {
     if (x < -150) {
       mobile_menu_popup.classList.add('hidden')
-      mobile_menu_popup.style.left = `0`
-    } else {
-      mobile_menu_popup.style.left = `0`
+      body.classList.remove('modal-open')
     }
+    mobile_menu_popup.style.left = `0`
   })
   mobileMenuCloseTouchDetector.addCallback('moveRight', (x, y) => {
-    console.log('move right', x, y)
     mobile_menu_popup.classList.remove('hidden')
     mobile_menu_popup.style.left = `${x}px`
   })
