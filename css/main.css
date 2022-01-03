@@ -937,6 +937,10 @@ section {
   align-self: center;
 }
 
+.booking-form__logo {
+  display: none;
+}
+
 
 @media only screen and (max-width: 1100px) and (min-width: 769px) {
   .main-header {
@@ -964,6 +968,10 @@ section {
   }
   .main-header-menu-mobile {
     display: block;
+    position: fixed;
+    top: 2rem;
+    right: 2rem;
+    z-index: 6;
   }
 
   section {
@@ -988,6 +996,7 @@ section {
     text-align: center;
     gap: 1em;
     margin-bottom: 4em;
+    align-self: center;
   }
 
   .shape-1 {
@@ -1020,6 +1029,8 @@ section {
     align-items: center;
     justify-content: center;
     gap: 1em;
+
+    max-width: 400px;
   }
 
   .about-us-section__video {
@@ -1052,6 +1063,10 @@ section {
 
   .benefits-section__row_item__title {
     text-align: center;
+  }
+
+  .benefits-section__row_item__content {
+    max-width: 400px;
   }
 
   .agenda-section__column {
@@ -1105,6 +1120,7 @@ section {
 
   .contacts-section__row {
     flex-direction: column;
+    max-width: 400px;
   }
 
   .footer {
@@ -1157,5 +1173,114 @@ section {
 
   .contacts-section__social_item.border-left {
     margin-left: -2px;
+  }
+
+
+  .booking-form__popup_container {
+    width: 100%;
+    height: 100%;
+    max-width: inherit;
+    max-height: inherit;
+  }
+
+  .booking-form__column {
+    gap: 2rem;
+    z-index: 5;
+  }
+
+  .booking-form__column > .title {
+    width: auto;
+  }
+
+  .booking-form__inputs_row {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .shape-9 {
+    transform: rotate(180deg);
+    left: -50px;
+    top: 50%;
+    right: initial;
+    z-index: 1;
+  }
+
+  #booking-form-close-button {
+    z-index: 6;
+  }
+
+  .booking-form__logo {
+    display: block;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    font-weight: 600;
+  }
+
+  .our-team__popup_container {
+    max-width: initial;
+    max-height: initial;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+  }
+
+  .our-team__column {
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    z-index: 6;
+    margin-top: 17rem;
+  }
+
+  .our-team__column > .title {
+    text-align: center;
+    width: initial;
+  }
+
+  .our-team__members {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 4rem;
+  }
+
+  .mobile-menu {
+    z-index: 10;
+    background: #FFFFFF;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .mobile-menu__header {
+    margin-top: 5vh;
+    margin-left: 2rem;
+    font-weight: 600;
+  }
+
+  .mobile-menu__footer, .mobile-menu__content {
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+
+  .mobile-menu__content {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 22px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    gap: 2rem;
   }
 }
