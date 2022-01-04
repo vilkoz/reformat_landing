@@ -111,7 +111,7 @@ class ScrollDetector {
     window.onscroll = (e) => {
       let html = document.getElementsByTagName('html')[0]
       const scrollTop = html.scrollTop
-      const maxScrollTop = window.innerWidth < 768 ? window.innerHeight/10 : window.innerHeight/3
+      const maxScrollTop = window.innerWidth < 768 ? window.innerHeight/10 : 150
       const scrollFraction = Math.min(scrollTop / maxScrollTop, 1)
       if (!this.didScroll) {
         this.didScroll = true
