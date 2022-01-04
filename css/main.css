@@ -370,6 +370,9 @@ a, a:hover, a:visited, a:active {
   margin: 0;
   position: relative;
   width: 100%;
+
+  overflow-x: hidden;
+  overflow-y: clip;
 }
 
 .home-section__row {

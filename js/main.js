@@ -111,22 +111,32 @@ class ScrollDetector {
     window.onscroll = (e) => {
       let html = document.getElementsByTagName('html')[0]
       const scrollTop = html.scrollTop
-      const maxScrollTop = window.innerHeight/3
+      const maxScrollTop = window.innerWidth < 768 ? window.innerHeight/10 : window.innerHeight/3
       const scrollFraction = Math.min(scrollTop / maxScrollTop, 1)
       if (!this.didScroll) {
         this.didScroll = true
 
-        this.onScrollStartedCallback && this.onScrollStartedCallback()
+        if (this.onScrollStartedCallback) {
+          window.requestAnimationFrame(this.onScrollStartedCallback)
+        }
       } else if (this.didScroll && scrollFraction == 0) {
         this.didScroll = false
-        this.onScrollToTopCallback && this.onScrollToTopCallback()
+        if (this.onScrollToTopCallback) {
+          window.requestAnimationFrame(this.onScrollToTopCallback)
+        }
       } else if (scrollFraction == 1) {
-        this.onScrollEndCallback && this.onScrollEndCallback()
+        if (this.onScrollEndCallback) {
+          window.requestAnimationFrame(this.onScrollEndCallback)
+        }
       } else {
         function easeInEaseOut(t) {
           return t * t * (3.0 - 2.0 * t)
         }
-        this.onScrollCallback && this.onScrollCallback(easeInEaseOut(scrollFraction))
+        if (this.onScrollCallback) {
+          window.requestAnimationFrame(() => {
+            this.onScrollCallback(easeInEaseOut(scrollFraction))
+          })
+        }
       }
     }
   }
@@ -156,7 +166,7 @@ domReady(() => {
   function preloadImg() {
     const images = [
       "img/illustrations/1.png",
-      "img/illustrations/5.png",
+      "img/illustrations/4.png",
       "img/illustrations/6.png",
     ]
     images.forEach(image => {
@@ -190,7 +200,8 @@ domReady(() => {
 
   scrollDetector.addCallback('scroll', (percent) => {
     const sad_image_elem = document.querySelector('.home-section__image > img')
-    if (sad_image_elem.src != "img/illustrations/6.png") {
+    const image_url = (new URL(`img/illustrations/6.png`, document.location).href)
+    if (sad_image_elem.src != image_url) {
       sad_image_elem.src = "img/illustrations/6.png"
     }
 
@@ -210,7 +221,10 @@ domReady(() => {
     const sliding_image = document.getElementById('home-section__sliding_image')
     sliding_image.style.display = 'none'
     const sad_image_elem = document.querySelector('.home-section__image > img')
-    sad_image_elem.src = "img/illustrations/1.png"
+    const image_url = (new URL(`img/illustrations/1.png`, document.location).href)
+    if (sad_image_elem.src != image_url) {
+      sad_image_elem.src = "img/illustrations/1.png"
+    }
     sad_image_elem.parentNode.style.justifyContent = null
 
     const fade_out_image = document.getElementById('home-section__fade_out_image')
