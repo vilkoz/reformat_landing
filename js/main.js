@@ -98,7 +98,138 @@ class TouchDetector {
   }
 }
 
+class ScrollDetector {
+  didScroll = false
+
+  onScrollCallback = undefined
+  onScrollStartedCallback = undefined
+  onScrollEndCallback = undefined
+  onScrollToTopCallback = undefined
+
+
+  constructor() {
+    window.onscroll = (e) => {
+      let html = document.getElementsByTagName('html')[0]
+      const scrollTop = html.scrollTop
+      const maxScrollTop = window.innerHeight/3
+      const scrollFraction = Math.min(scrollTop / maxScrollTop, 1)
+      if (!this.didScroll) {
+        this.didScroll = true
+
+        this.onScrollStartedCallback && this.onScrollStartedCallback()
+      } else if (this.didScroll && scrollFraction == 0) {
+        this.didScroll = false
+        this.onScrollToTopCallback && this.onScrollToTopCallback()
+      } else if (scrollFraction == 1) {
+        this.onScrollEndCallback && this.onScrollEndCallback()
+      } else {
+        function easeInEaseOut(t) {
+          return t * t * (3.0 - 2.0 * t)
+        }
+        this.onScrollCallback && this.onScrollCallback(easeInEaseOut(scrollFraction))
+      }
+    }
+  }
+
+  addCallback = (type, callback) => {
+    switch (type) {
+      case 'scrollToTop':
+        this.onScrollToTopCallback = callback
+        break
+      case 'scrollEnd':
+        this.onScrollEndCallback = callback
+        break
+      case 'scrollStarted':
+        this.onScrollStartedCallback = callback
+        break
+      case 'scroll':
+        this.onScrollCallback = callback
+        break
+      default:
+        console.error(`no such callback '${type}'`)
+    }
+
+  }
+}
+
 domReady(() => {
+  function preloadImg() {
+    const images = [
+      "img/illustrations/1.png",
+      "img/illustrations/5.png",
+      "img/illustrations/6.png",
+    ]
+    images.forEach(image => {
+      let img = new Image()
+      img.src = image
+    })
+  }
+  preloadImg()
+
+  const scrollDetector = new ScrollDetector()
+
+  const sliding_image_min_displacement = 463.0 / 696.0
+
+  scrollDetector.addCallback('scrollStarted', () => {
+    // window.onscroll = undefined
+    const sad_image_elem = document.querySelector('.home-section__image > img')
+    sad_image_elem.src = "img/illustrations/6.png"
+    // sad_image_elem.parentNode.classList.remove('small_image')
+    sad_image_elem.parentNode.style.justifyContent = 'flex-start'
+
+    const sliding_image = document.getElementById('home-section__sliding_image')
+    sliding_image.style.display = 'block'
+    sliding_image.style.left = `${sad_image_elem.width * sliding_image_min_displacement + (sliding_image.width)}px`
+    sliding_image.style.height = `${sad_image_elem.height}px`
+
+    const fade_out_image = document.getElementById('home-section__fade_out_image')
+    fade_out_image.style.display = 'block'
+    fade_out_image.style.opacity = '0'
+    fade_out_image.style.height = `${sad_image_elem.height}px`
+  })
+
+  scrollDetector.addCallback('scroll', (percent) => {
+    const sad_image_elem = document.querySelector('.home-section__image > img')
+    if (sad_image_elem.src != "img/illustrations/6.png") {
+      sad_image_elem.src = "img/illustrations/6.png"
+    }
+
+    const sliding_image = document.getElementById('home-section__sliding_image')
+    sliding_image.style.display = 'block'
+    sliding_image.style.opacity = `${percent}`
+    sliding_image.style.left = `${sad_image_elem.width * sliding_image_min_displacement + (sliding_image.width * (1 - percent))}px`
+    sliding_image.style.height = `${sad_image_elem.height}px`
+
+    const fade_out_image = document.getElementById('home-section__fade_out_image')
+    fade_out_image.style.display = 'block'
+    fade_out_image.style.opacity = `${percent}`
+    fade_out_image.style.height = `${sad_image_elem.height}px`
+  })
+
+  scrollDetector.addCallback('scrollEnd', (percent) => {
+    const sliding_image = document.getElementById('home-section__sliding_image')
+    sliding_image.style.display = 'none'
+    const sad_image_elem = document.querySelector('.home-section__image > img')
+    sad_image_elem.src = "img/illustrations/1.png"
+    sad_image_elem.parentNode.style.justifyContent = null
+
+    const fade_out_image = document.getElementById('home-section__fade_out_image')
+    fade_out_image.style.display = 'none'
+  })
+
+  scrollDetector.addCallback('scrollToTop', (percent) => {
+    const sliding_image = document.getElementById('home-section__sliding_image')
+    sliding_image.style.display = 'none'
+    const sad_image_elem = document.querySelector('.home-section__image > img')
+    sad_image_elem.src = "img/illustrations/4.png"
+    // sad_image_elem.parentNode.classList.add('small_image')
+    sad_image_elem.parentNode.style.justifyContent = null
+
+    const fade_out_image = document.getElementById('home-section__fade_out_image')
+    fade_out_image.style.display = 'none'
+  })
+
+
   const body = document.getElementsByTagName('body')[0]
   let our_team_button = document.getElementById('our-team-button')
   let our_team_popup = document.getElementById('our-team')

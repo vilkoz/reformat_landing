@@ -288,12 +288,13 @@ textarea {
        url("../font/Montserrat-ThinItalic.ttf") format("truetype");
 }
 
-html {
+html.smooth-scroll {
   scroll-behavior: smooth;
 }
 
 body {
   font-family: Montserrat;
+  overflow-x: hidden;
 }
 
 body.modal-open {
@@ -401,10 +402,36 @@ a, a:hover, a:visited, a:active {
   width: 60%;
   display: flex;
   align-items: center;
+  justify-content: flex-start;
+
+  position: relative;
 }
 
 .home-section__image > img {
   max-width: 100%;
+  max-height: 521px;
+  height: auto;
+  width: auto;
+}
+
+.home-section__image.small_image {
+  align-items: flex-end;
+}
+
+.home-section__image.small_image > img {
+  max-height: 300px;
+}
+
+#home-section__sliding_image {
+  display: none;
+  position: absolute;
+  /*bottom: 0;*/
+}
+
+#home-section__fade_out_image {
+  display: none;
+  position: absolute;
+  left: 0;
 }
 
 .button {
