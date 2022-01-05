@@ -306,6 +306,10 @@ a, a:hover, a:visited, a:active {
   text-decoration: none;
 }
 
+main {
+  position: relative;
+}
+
 .main-header {
   font-style: normal;
   font-weight: 600;
@@ -508,9 +512,9 @@ a, a:hover, a:visited, a:active {
 
 .shape-2 {
   position: absolute;
-  z-index: -1;
-  right: 0;
-  bottom: -10em;
+  z-index: 3;
+  right: -2em;
+  top: -100px;
 }
 
 section {
