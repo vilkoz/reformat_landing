@@ -276,7 +276,8 @@ domReady(() => {
   }
 
   let send_booking_form_button = document.getElementById('send-booking-form')
-  send_booking_form_button.onclick = () => {
+  send_booking_form_button.onclick = (e) => {
+    e.preventDefault()
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwSnG1ANtqOCP5u_tVc8zjwNJr3W6yAif41O22qJGR2drhF2gxNTArx2hcg7Hq5-Y0/exec'
     const name = document.getElementById('name').value
     const lastname = document.getElementById('lastname').value
@@ -285,21 +286,22 @@ domReady(() => {
 
     const data = {name, lastname, phone, email}
     console.log('data', data)
-
-    fetch(scriptURL, {
-        method: 'POST',
-        redirect: 'follow',
-        headers: {
-          'Content-Type': 'text/plain;charset=utf-8',
-        },
-        body: JSON.stringify(data)
-      })
-      .then(data => {
-        console.log('Success:', data)
-      })
-      .catch((error) => {
-        console.error('Error:', error)
-      })
+    // fetch(scriptURL, {
+    //     method: 'POST',
+    //     redirect: 'follow',
+    //     headers: {
+    //       'Content-Type': 'text/plain;charset=utf-8',
+    //     },
+    //     body: JSON.stringify(data)
+    //   })
+    //   .then(data => {
+    //     console.log('Success:', data)
+    //   })
+    //   .catch((error) => {
+    //     console.error('Error:', error)
+    //   })
+    document.querySelector('.booking-form__column').style.display = 'none'
+    document.querySelector('.booking-form__send_result').style.display = 'block'
   }
 
   const mobile_menu_open_button = document.getElementById("mobile-menu-open-button")

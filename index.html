@@ -229,33 +229,37 @@
 
   <div class="booking-form hidden" id="booking-form">
     <div class="booking-form__popup_container">
-      <div class="booking-form__column">
+      <div class="booking-form__send_result">
+        <div class="title">Готово!</div>
+        <div>Мы записали Ваши данные и свяжемся с Вами в ближайшее время</div>
+      </div>
+      <form class="booking-form__column">
         <div class="booking-form__logo main-header__logo">REFORMAT</div>
         <div class="title">Забронировать место в лагере</div>
           <div class="booking-form__inputs_column">
             <div class="booking-form__inputs_row">
               <div class="booking-form__input_item">
                 <label for="name">Имя</label>
-                <input id="name" type="text">
+                <input id="name" type="text" required>
               </div>
               <div class="booking-form__input_item">
                 <label for="lastname">Фамилия</label>
-                <input id="lastname" type="text">
+                <input id="lastname" type="text" required>
               </div>
             </div>
             <div class="booking-form__inputs_row">
               <div class="booking-form__input_item">
                 <label for="phone">Телефон</label>
-                <input id="phone" type="tel" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+                <input id="phone" type="tel" pattern="^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$" required placeholder="+380951112233">
               </div>
               <div class="booking-form__input_item">
                 <label for="email">E-mail</label>
-                <input id="email" type="email">
+                <input id="email" type="email" required pattern='/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;'>
               </div>
             </div>
-        </div>
-        <div class="button button_2" id="send-booking-form">Забронировать место</div>
-      </div>
+          </div>
+        <input type="submit" class="button button_2" id="send-booking-form" value="Забронировать место">
+      </form>
       <div class="button button_1" id="booking-form-close-button"></div>
     </div>
 

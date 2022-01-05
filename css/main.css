@@ -456,6 +456,7 @@ main {
 }
 
 .button_2 {
+  border: none;
   background-image: url("../img/buttons/2.png");
 }
 
@@ -922,6 +923,25 @@ section {
   max-height: 690px;
   background: #FFFFFF;
   position: relative;
+}
+
+@keyframes send-result-appear {
+  from {
+    transform: translateX(100px);
+  }
+  to {
+    transform: translateX(0px);
+  }
+}
+
+.booking-form__send_result {
+  display: none;
+  animation-name: send-result-appear;
+  animation-duration: 2s;
+
+  z-index: 5;
+  margin-right: 2em;
+  margin-left: 2em;
 }
 
 .booking-form__column {
