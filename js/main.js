@@ -286,20 +286,20 @@ domReady(() => {
 
     const data = {name, lastname, phone, email}
     console.log('data', data)
-    // fetch(scriptURL, {
-    //     method: 'POST',
-    //     redirect: 'follow',
-    //     headers: {
-    //       'Content-Type': 'text/plain;charset=utf-8',
-    //     },
-    //     body: JSON.stringify(data)
-    //   })
-    //   .then(data => {
-    //     console.log('Success:', data)
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error:', error)
-    //   })
+    fetch(scriptURL, {
+        method: 'POST',
+        redirect: 'follow',
+        headers: {
+          'Content-Type': 'text/plain;charset=utf-8',
+        },
+        body: JSON.stringify(data)
+      })
+      .then(data => {
+        console.log('Success:', data)
+      })
+      .catch((error) => {
+        console.error('Error:', error)
+      })
     document.querySelector('.booking-form__column').style.display = 'none'
     document.querySelector('.booking-form__send_result').style.display = 'block'
   }
