@@ -401,6 +401,11 @@ main {
   margin-top: 5em;
 }
 
+.home-section__text > .title {
+  font-size: 54px;
+  line-height: 68px;
+}
+
 .home-section__image {
   /*background: url("../img/illustrations/1.png") no-repeat;*/
   /* width: 696px; */
@@ -569,6 +574,7 @@ section {
 }
 
 .benefits-section {
+  height: 700px;
   background: #FFAA69;
   display: flex;
   align-items: center;
@@ -597,7 +603,7 @@ section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 200px;
+  width: 290px;
 }
 
 .benefits-section__row_item__text {
@@ -606,10 +612,12 @@ section {
 
 .benefits-section__row_item__title {
   font-weight: 600;
-  font-size: 18px;
+  font-size: 25px;
   line-height: 22px;
 
   margin-bottom: 1em;
+
+  text-align: center;
 }
 
 .agenda-section {
@@ -993,6 +1001,7 @@ section {
 
 .booking-form__column > .button {
   align-self: center;
+  background-color: #ffffff;
 }
 
 .booking-form__logo {
@@ -1119,6 +1128,10 @@ section {
 
   .shape-3 {
     bottom: -14em;
+  }
+
+  .benefits-section {
+    height: auto;
   }
 
   .benefits-section__column {
