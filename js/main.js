@@ -160,6 +160,63 @@ class ScrollDetector {
     }
 
   }
+
+  stopScrollDetection = () => {
+    window.onscroll = undefined
+  }
+}
+
+class AnimationController {
+  animateCallback = undefined
+  animationEndCallback = undefined
+
+  countdownTimer = undefined
+
+  start = null
+  duration = 1000
+  defaultAnimationDelay = 2000
+
+  constructor(scrollDetector) {
+    this.scrollDetector = scrollDetector
+  }
+
+  animate = () => {
+    window.requestAnimationFrame(this.animationStep);
+  }
+
+  animationStep = (timestamp) => {
+    if (!this.animateCallback || !this.animationEndCallback) {
+      return ;
+    }
+    if (!this.start) {
+      this.start = timestamp
+    }
+    const progress = (timestamp - this.start) / this.duration
+    if (progress < 1.0) {
+      this.animateCallback(progress)
+      window.requestAnimationFrame(this.animationStep)
+    } else {
+      this.animationEndCallback(progress)
+    }
+  }
+
+  startAnimationCountdown = () => {
+    this.stopAnimationCountdown()
+    this.countdownTimer = window.setTimeout(() => {
+      if (this.scrollDetector.didScroll) {
+        return ;
+      }
+      this.scrollDetector.stopScrollDetection()
+
+      this.animate()
+    }, this.defaultAnimationDelay)
+  }
+
+  stopAnimationCountdown = () => {
+    if (this.countdownTimer) {
+      window.clearTimeout(this.countdownTimer)
+    }
+  }
 }
 
 domReady(() => {
@@ -177,6 +234,9 @@ domReady(() => {
   preloadImg()
 
   const scrollDetector = new ScrollDetector()
+
+  const animationController = new AnimationController(scrollDetector)
+  animationController.startAnimationCountdown()
 
   const sliding_image_min_displacement = 463.0 / 696.0
 
@@ -196,9 +256,11 @@ domReady(() => {
     fade_out_image.style.display = 'block'
     fade_out_image.style.opacity = '0'
     fade_out_image.style.height = `${sad_image_elem.height}px`
+
+    animationController.stopAnimationCountdown()
   })
 
-  scrollDetector.addCallback('scroll', (percent) => {
+  const animationCallback = (percent) => {
     const sad_image_elem = document.querySelector('.home-section__image > img')
     const image_url = (new URL(`img/illustrations/6.png`, document.location).href)
     if (sad_image_elem.src != image_url) {
@@ -215,9 +277,11 @@ domReady(() => {
     fade_out_image.style.display = 'block'
     fade_out_image.style.opacity = `${percent}`
     fade_out_image.style.height = `${sad_image_elem.height}px`
-  })
+  }
+  scrollDetector.addCallback('scroll', animationCallback)
+  animationController.animateCallback = animationCallback
 
-  scrollDetector.addCallback('scrollEnd', (percent) => {
+  const animationEndCallback = (percent) => {
     const sliding_image = document.getElementById('home-section__sliding_image')
     sliding_image.style.display = 'none'
     const sad_image_elem = document.querySelector('.home-section__image > img')
@@ -229,7 +293,9 @@ domReady(() => {
 
     const fade_out_image = document.getElementById('home-section__fade_out_image')
     fade_out_image.style.display = 'none'
-  })
+  }
+  scrollDetector.addCallback('scrollEnd', animationEndCallback)
+  animationController.animationEndCallback = animationEndCallback
 
   scrollDetector.addCallback('scrollToTop', (percent) => {
     const sliding_image = document.getElementById('home-section__sliding_image')
@@ -241,6 +307,8 @@ domReady(() => {
 
     const fade_out_image = document.getElementById('home-section__fade_out_image')
     fade_out_image.style.display = 'none'
+
+    animationController.startAnimationCountdown()
   })
 
 
