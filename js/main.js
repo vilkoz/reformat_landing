@@ -347,12 +347,36 @@ domReady(() => {
   send_booking_form_button.onclick = (e) => {
     e.preventDefault()
     const scriptURL = 'https://script.google.com/macros/s/AKfycbwSnG1ANtqOCP5u_tVc8zjwNJr3W6yAif41O22qJGR2drhF2gxNTArx2hcg7Hq5-Y0/exec'
-    const name = document.getElementById('name').value
-    const lastname = document.getElementById('lastname').value
-    const phone = document.getElementById('phone').value
-    const email = document.getElementById('email').value
+    const nameElem = document.getElementById('name')
+    const lastnameElem = document.getElementById('lastname')
+    const phoneElem = document.getElementById('phone')
+    const emailElem = document.getElementById('email')
+
+    const name = nameElem.value
+    const lastname = lastnameElem.value
+    const phone = phoneElem.value
+    const email = emailElem.value
+
+    const res = [nameElem, lastnameElem, phoneElem, emailElem].map(e => {
+      const value = e.value
+      if (value.trim().length === 0) {
+        e.value = value.trim()
+        e.reportValidity()
+        return false;
+      }
+      if (!e.checkValidity()) {
+        e.reportValidity()
+        return false;
+      }
+      return true;
+    })
+    console.log(res)
+    if (res.some(x => x === false)) {
+      return ;
+    }
 
     const data = {name, lastname, phone, email}
+
     console.log('data', data)
     fetch(scriptURL, {
         method: 'POST',
