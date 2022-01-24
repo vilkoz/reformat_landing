@@ -462,27 +462,27 @@ main {
 
 .button_2 {
   border: none;
-  background-image: url("../img/buttons/2.png");
+  background-image: url("../img/buttons/2.svg");
 }
 
 .button_2:hover {
-  background-image: url("../img/buttons/4.png");
+  background-image: url("../img/buttons/4.svg");
 }
 
 .button_4 {
-  background-image: url("../img/buttons/4.png");
+  background-image: url("../img/buttons/4.svg");
 }
 
 .button_4:hover {
-  background-image: url("../img/buttons/2.png");
+  background-image: url("../img/buttons/2.svg");
 }
 
 .button_3 {
-  background-image: url("../img/buttons/3.png");
+  background-image: url("../img/buttons/3.svg");
 }
 
 .button_3:hover {
-  background-image: url("../img/buttons/2.png");
+  background-image: url("../img/buttons/2.svg");
 }
 
 .button_6 {
@@ -702,6 +702,10 @@ section {
   position: absolute;
   bottom: 10%;
   right: -2em;
+}
+
+.shape-8-mobile {
+  display: none;
 }
 
 .contacts-section {
@@ -1086,6 +1090,10 @@ section {
     margin-bottom: 4em;
     align-self: center;
   }
+  .home-section__text > .title {
+    font-size: 32px;
+    line-height: 39px;
+  }
 
   .shape-1 {
     top: 30%;
@@ -1111,7 +1119,7 @@ section {
   }
 
   .about-us-section__text {
-    width: auto;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -1191,6 +1199,14 @@ section {
     width: 195px;
   }
 
+  .booking-section__column {
+    width: 100%;
+  }
+
+  .booking-section__column > button_4 {
+    width: 100%;
+  }
+
   .shape-7 > img {
     height: inherit;
   }
@@ -1198,7 +1214,7 @@ section {
   .shape-7 {
     height: 90px;
     top: 35%;
-    left: -14%;
+    left: calc(-2em - 15px);
   }
 
   .shape-8 > img {
@@ -1206,8 +1222,21 @@ section {
   }
 
   .shape-8 {
+    display: none;
     height: 90px;
     bottom: 42%;
+  }
+
+  .shape-8-mobile > img {
+    height: inherit;
+  }
+
+  .shape-8-mobile {
+    display: block;
+    height: 260px;
+    position: absolute;
+    right: -2.4em;
+    bottom: 0px;
   }
 
   .contacts-section__row {
@@ -1244,7 +1273,7 @@ section {
   }
 
   .contacts-section__column > .title {
-    width: 40%;
+    /*width: 40%;*/
   }
 
   .contacts-section__contacts {
@@ -1386,5 +1415,18 @@ section {
     align-items: flex-start;
 
     gap: 2rem;
+  }
+
+
+}
+
+@media only screen and (max-width: 321px) {
+  .home-section__text {
+    width: 100%;
+  }
+
+  .home-section__text > .title {
+    font-size: 27px;
+    line-height: 31px;
   }
 }
